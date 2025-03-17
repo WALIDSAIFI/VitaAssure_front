@@ -1,0 +1,64 @@
+<div class="min-h-screen bg-gradient-to-br from-gray-800 to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full mx-auto space-y-8 bg-white p-8 rounded-xl shadow-lg">
+    <!-- Logo et Titre -->
+    <div class="text-center">
+      <!-- Logo SVG -->
+      <svg class="mx-auto h-16 w-auto text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"/>
+      </svg>
+      <h2 class="mt-6 text-3xl font-bold text-gray-900">
+        Connexion
+      </h2>
+      <p class="mt-2 text-sm text-gray-600">
+        Accédez à votre espace assuré
+      </p>
+    </div>
+
+    <!-- Formulaire -->
+    <form class="mt-8 space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" formControlName="email" type="email" required 
+               class="form-input" placeholder="exemple@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input id="password" formControlName="password" type="password" required 
+               class="form-input" placeholder="••••••••">
+      </div>
+
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          <input id="remember-me" type="checkbox" 
+                 class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
+          <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+            Se souvenir de moi
+          </label>
+        </div>
+
+        <a href="#" class="text-sm font-medium text-primary-600 hover:text-primary-500">
+          Mot de passe oublié?
+        </a>
+      </div>
+
+      <button type="submit" [disabled]="!loginForm.valid" class="btn-primary w-full">
+        Se connecter
+      </button>
+
+      <div class="text-center">
+        <p class="text-sm text-gray-600">
+          Pas encore de compte?
+          <a routerLink="/register" class="font-medium text-primary-600 hover:text-primary-500">
+            S'inscrire
+          </a>
+        </p>
+      </div>
+    </form>
+
+    <!-- Ajouter après le formulaire -->
+    <div *ngIf="errorMessage" class="mt-2 text-red-600 text-sm text-center">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div> 
