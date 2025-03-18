@@ -1,0 +1,14 @@
+/* Ajoutez des styles personnalisés si nécessaire */
+:host {
+  display: block;
+  width: 100%;
+}
+
+.sidebar-shadow {
+  box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.1), 2px 0 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-content {
+  height: 100vh;
+  overflow-y: auto;
+}

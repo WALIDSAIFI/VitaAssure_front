@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Vita';
+  constructor(
+    public authService: AuthService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle('VitaAssure');
+  }
 }

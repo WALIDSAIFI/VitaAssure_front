@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AuthModule } from './auth/auth.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AuthModule
+    AuthModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
