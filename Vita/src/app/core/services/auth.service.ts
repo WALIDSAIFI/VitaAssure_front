@@ -1,54 +1,32 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import { LoginModel, RegisterModel } from '../../shared/models/auth.model';
 
-const API_URL = 'http://localhost:8080/api/auth';
+export interface User {
+  id: number;
+  nom: string;
+  prenom: string;
+  email: string;
+  role: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  // Données mockées pour le développement frontend
+  private mockUser: User = {
+    id: 1,
+    nom: 'Doe',
+    prenom: 'John',
+    email: 'john.doe@example.com',
+    role: 'ADHERENT'
+  };
 
-  login(credentials: LoginModel): Observable<any> {
-    return this.http.post(`${API_URL}/login`, credentials).pipe(
-      tap((response: any) => {
-        if (response && response.token) {
-          // Stockage du token
-          localStorage.setItem('token', response.token);
-          // Stockage des informations utilisateur si nécessaire
-          if (response.user) {
-            localStorage.setItem('user', JSON.stringify(response.user));
-          }
-        }
-      })
-    );
+  getCurrentUser(): User {
+    return this.mockUser;
   }
 
-  register(userData: RegisterModel): Observable<any> {
-    return this.http.post(`${API_URL}/register`, userData);
-  }
-
-  // Méthode pour vérifier si l'utilisateur est connecté
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
-  }
-
-  // Méthode pour récupérer le token
-  getToken(): string | null {
-    return localStorage.getItem('token');
-  }
-
-  // Méthode pour récupérer les informations de l'utilisateur
-  getCurrentUser(): any {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
-  }
-
-  // Méthode pour déconnecter l'utilisateur
   logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    // Pour le moment, on ne fait rien
+    console.log('Déconnexion...');
   }
 } 
