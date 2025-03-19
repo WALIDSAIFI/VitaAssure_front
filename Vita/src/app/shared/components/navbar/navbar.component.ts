@@ -8,7 +8,7 @@ import { AuthService, User } from '../../../core/services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  currentUser: User;
+  currentUser: User | null;
 
   constructor(
     private router: Router,

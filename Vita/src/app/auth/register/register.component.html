@@ -77,10 +77,10 @@
         <select id="situationFamiliale" formControlName="situationFamiliale" required
                 class="form-input">
           <option value="">Sélectionnez votre situation</option>
-          <option value="CELIBATAIRE">Célibataire</option>
-          <option value="MARIE">Marié(e)</option>
-          <option value="DIVORCE">Divorcé(e)</option>
-          <option value="VEUF">Veuf/Veuve</option>
+          <option *ngFor="let situation of situationsFamiliales" 
+                  [value]="situation.value">
+            {{ situation.label }}
+          </option>
         </select>
         <div *ngIf="registerForm.get('situationFamiliale')?.touched && registerForm.get('situationFamiliale')?.invalid" class="text-red-500 text-sm mt-1">
           La situation familiale est requise
@@ -116,8 +116,15 @@
         </label>
       </div>
 
-      <button type="submit" [disabled]="!registerForm.valid" class="btn-primary w-full">
-        Créer mon compte
+      <button type="submit" [disabled]="!registerForm.valid || isLoading" class="btn-primary w-full">
+        <span *ngIf="isLoading" class="inline-flex items-center">
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Inscription en cours...
+        </span>
+        <span *ngIf="!isLoading">Créer mon compte</span>
       </button>
 
       <div class="text-center">

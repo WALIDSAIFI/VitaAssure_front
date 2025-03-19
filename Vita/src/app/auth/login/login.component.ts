@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
-import { LoginModel } from '../../shared/models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +11,7 @@ import { LoginModel } from '../../shared/models/auth.model';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -28,18 +28,34 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
+      this.isLoading = true;
+      this.errorMessage = '';
+
+      const credentials = {
+        email: this.loginForm.get('email')?.value,
+        password: this.loginForm.get('password')?.value
+      };
+
+      console.log('Envoi des identifiants:', credentials);
+
+      this.authService.login(credentials).subscribe({
         next: (response) => {
-          console.log('Login successful');
-          // Vérifier si l'authentification a réussi
-          if (this.authService.isAuthenticated()) {
-            // Rediriger vers le dashboard ou la page d'accueil
-            this.router.navigate(['/dashboard']);
+          console.log('Réponse de login:', response);
+          this.isLoading = false;
+          
+          const currentUser = this.authService.getCurrentUser();
+          if (currentUser) {
+            if (currentUser.role === 'ADMINISTRATEUR') {
+              this.router.navigate(['/admin']);
+            } else {
+              this.router.navigate(['/dashboard']);
+            }
           }
         },
         error: (error) => {
-          console.error('Login failed', error);
-          this.errorMessage = 'Email ou mot de passe incorrect';
+          this.isLoading = false;
+          console.error('Erreur de login:', error);
+          this.errorMessage = error.message || 'Email ou mot de passe incorrect';
         }
       });
     }
