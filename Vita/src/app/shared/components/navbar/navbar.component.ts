@@ -9,6 +9,7 @@ import { AuthService, User } from '../../../core/services/auth.service';
 })
 export class NavbarComponent {
   currentUser: User | null;
+  isDropdownOpen = false;
 
   constructor(
     private router: Router,
@@ -20,5 +21,9 @@ export class NavbarComponent {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }
