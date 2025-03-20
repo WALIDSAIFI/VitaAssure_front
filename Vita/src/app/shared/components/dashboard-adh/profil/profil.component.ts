@@ -1,17 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../core/services/auth.service';
-
-interface Professor {
-  id?: number;
-  nom: string;
-  prenom: string;
-  email: string;
-  telephone?: string;
-  dateNaissance?: string;
-  adresse?: string;
-  situationFamiliale?: string;
-  status?: 'actif' | 'inactif';
-}
+import { UserService, User } from '../../../../core/services/user.service';
 
 @Component({
   selector: 'app-profil',
@@ -19,25 +7,23 @@ interface Professor {
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit {
-  currentUser: Professor | null = null;
+  currentUser: User | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    const user = this.authService.getCurrentUser();
-    if (user) {
-      this.currentUser = {
-        id: user.id,
-        nom: user.nom,
-        prenom: user.prenom,
-        email: user.email,
-        telephone: user.telephone,
-        dateNaissance: user.dateNaissance,
-        adresse: user.adresse,
-        situationFamiliale: user.situationFamiliale,
-        status: 'actif'
-      };
-    }
+    this.loadUserProfile();
+  }
+
+  loadUserProfile() {
+    this.userService.getCurrentUser().subscribe({
+      next: (user) => {
+        this.currentUser = user;
+      },
+      error: (error) => {
+        console.error('Erreur lors du chargement du profil:', error);
+      }
+    });
   }
 
   modifierProfil() {
