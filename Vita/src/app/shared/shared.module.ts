@@ -7,6 +7,7 @@ import { HomeAdhComponent } from './components/dashboard-adh/home-adh/home-adh.c
 import { ProfilComponent } from './components/dashboard-adh/profil/profil.component';
 import { HomeAdminComponent } from './components/dashboard-admin/home-admin/home-admin.component';
 import { UtilisateursComponent } from './components/dashboard-admin/utilisateurs/utilisateurs.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UtilisateursComponent } from './components/dashboard-admin/utilisateurs
   ],
   imports: [
     CommonModule,
-    RouterModule
+    ReactiveFormsModule,
+    RouterModule.forChild([]) 
   ],
   exports: [
     NavbarComponent,

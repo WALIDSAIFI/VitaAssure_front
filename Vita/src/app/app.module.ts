@@ -19,6 +19,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     FormsModule,
     ReactiveFormsModule,
     AuthModule,
+    SharedModule,
     SharedModule
   ],
   providers: [
