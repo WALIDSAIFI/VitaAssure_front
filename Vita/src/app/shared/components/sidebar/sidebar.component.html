@@ -21,18 +21,19 @@
       </button>
     </div>
 
-    <!-- Menu Items -->
-    <nav class="mt-8 space-y-2 px-4">
-      <a *ngFor="let item of menuItems" 
-         [routerLink]="item.route"
-         routerLinkActive="bg-gray-800"
-         class="flex items-center space-x-2 p-3 rounded-lg hover:bg-gray-800 transition-colors duration-200">
-        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"/>
-        </svg>
-        <span *ngIf="isOpen" class="text-sm">{{ item.title }}</span>
-      </a>
-    </nav>
+    
+   <!-- Menu Items -->
+<nav class="mt-8 space-y-2 px-4">
+  <a *ngFor="let item of filteredMenuItems" 
+     [routerLink]="item.route"
+     routerLinkActive="bg-gray-800"
+     class="flex items-center space-x-2 p-3 rounded-lg hover:bg-gray-800 transition-colors duration-200">
+    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="item.icon"/>
+    </svg>
+    <span *ngIf="isOpen" class="text-sm">{{ item.title }}</span>
+  </a>
+</nav>
 
     <!-- Footer -->
     <div class="absolute bottom-0 w-full p-4">

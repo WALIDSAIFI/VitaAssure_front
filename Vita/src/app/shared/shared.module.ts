@@ -8,6 +8,7 @@ import { ProfilComponent } from './components/dashboard-adh/profil/profil.compon
 import { HomeAdminComponent } from './components/dashboard-admin/home-admin/home-admin.component';
 import { UtilisateursComponent } from './components/dashboard-admin/utilisateurs/utilisateurs.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddDossierComponent } from './components/dashboard-adh/add-dossier/add-dossier.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeAdhComponent,
     ProfilComponent,
     HomeAdminComponent,
-    UtilisateursComponent
+    UtilisateursComponent,
+    AddDossierComponent 
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeAdhComponent,
     ProfilComponent,
     HomeAdminComponent,
-    UtilisateursComponent
+    UtilisateursComponent,
+    AddDossierComponent 
   ]
 })
 export class SharedModule { }
