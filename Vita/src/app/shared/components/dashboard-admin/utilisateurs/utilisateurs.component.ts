@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../core/services/auth.service';
+import { User, UserService } from '../../../../core/services/user.service'; 
+
+
 
 @Component({
   selector: 'app-utilisateurs',
@@ -7,21 +9,64 @@ import { AuthService } from '../../../../core/services/auth.service';
   styleUrls: ['./utilisateurs.component.css']
 })
 export class UtilisateursComponent implements OnInit {
-  users: any[] = [];
 
-  constructor(private authService: AuthService) {}
+  users: User[] = [];
+  isLoading = true;
+  errorMessage = '';
+  currentPage = 0;
+  pageSize = 10;
+  totalUsers = 0;
+
+
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    // Ici, vous devrez appeler votre service pour récupérer la liste des utilisateurs
-    // Pour l'instant, on utilise des données fictives
-    this.users = [
-      {
-        nom: 'Dupont',
-        prenom: 'Jean',
-        email: 'jean.dupont@example.com',
-        telephone: '0612345678'
-      },
-      // Ajoutez d'autres utilisateurs ici
-    ];
+    this.loadUsers();
   }
+
+  loadUsers() {
+    this.isLoading = true;
+    this.userService.getAllUsers(this.currentPage, this.pageSize).subscribe({
+      next: (users) => {
+        this.users = users;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorMessage = 'Erreur lors du chargement des utilisateurs';
+        this.isLoading = false;
+        console.error('Error loading users:', err);
+      }
+    });
+
+    JSON.stringify(this.users);
+  }
+
+  getStatusClass(isValid: boolean): string {
+    return isValid 
+      ? 'inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800'
+      : 'inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800';
+  }
+
+ 
+  nextPage() {
+    this.currentPage++;
+    this.loadUsers();
+  }
+
+  prevPage() {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.loadUsers();
+    }
+  }
+
+  validateUser(userId: number) {
+    this.userService.validateUser(userId).subscribe({
+      next: (response) => {
+        alert(response.message); 
+        this.loadUsers(); 
+      },
+    });
+  }
+  
 }
