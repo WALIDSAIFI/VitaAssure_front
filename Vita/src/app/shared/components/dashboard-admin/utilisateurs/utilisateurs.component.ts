@@ -63,10 +63,25 @@ export class UtilisateursComponent implements OnInit {
   validateUser(userId: number) {
     this.userService.validateUser(userId).subscribe({
       next: (response) => {
-        alert(response.message); 
-        this.loadUsers(); 
-      },
+        this.errorMessage = ''; // Réinitialiser le message d'erreur
+        alert(response.message);
+        this.loadUsers();
+      }
     });
   }
+  
+
+ 
+bloquerUser(userId: number) {
+  if (confirm('Êtes-vous sûr de vouloir bloquer cet utilisateur ?')) {
+    this.userService.bloquerUser(userId).subscribe({
+      next: (response) => {
+        alert(response.message); 
+        this.loadUsers(); // Recharger la liste des utilisateurs
+      },
+  
+    });
+  }
+}
   
 }

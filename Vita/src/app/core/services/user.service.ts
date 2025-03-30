@@ -56,5 +56,13 @@ export class UserService {
       {}
     );
   }
+
+  // Dans user.service.ts
+bloquerUser(userId: number): Observable<{ message: string }> {
+  return this.http.put<{ message: string }>(
+    `http://localhost:8080/api/utilisateurs/bloquer/${userId}`,
+    {}
+  );
+}
   
 }
