@@ -44,7 +44,13 @@ export class SidebarComponent implements OnInit {
       roles: ['ADHERENT']
     },
     {
-      title: 'Prise en Charge',
+      title: 'Ajouter Prise en Charge',
+      icon: 'M12 4v16m8-8H4',
+      route: '/addprise',
+      roles: ['ADHERENT']
+    },
+    {
+      title: 'Liste des  Prise en Charge',
       icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
       route: '/prise',
       roles: ['ADHERENT']
