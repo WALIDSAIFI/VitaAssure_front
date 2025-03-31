@@ -6,6 +6,8 @@ import { HomeAdhComponent } from './shared/components/dashboard-adh/home-adh/hom
 import { ProfilComponent } from './shared/components/dashboard-adh/profil/profil.component';
 import { HomeAdminComponent } from './shared/components/dashboard-admin/home-admin/home-admin.component';
 import { UtilisateursComponent } from './shared/components/dashboard-admin/utilisateurs/utilisateurs.component';
+import { AddDossierComponent } from './shared/components/dashboard-adh/add-dossier/add-dossier.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -14,7 +16,9 @@ const routes: Routes = [
   { path: 'dashboard', component: HomeAdhComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'admin', component: HomeAdminComponent },
-  { path: 'admin/utilisateurs', component: UtilisateursComponent }
+  { path: 'admin/utilisateurs', component: UtilisateursComponent },
+  {path: 'addossiers', component: AddDossierComponent }
+  
 ];
 
 @NgModule({

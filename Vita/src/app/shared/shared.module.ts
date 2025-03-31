@@ -9,6 +9,7 @@ import { HomeAdminComponent } from './components/dashboard-admin/home-admin/home
 import { UtilisateursComponent } from './components/dashboard-admin/utilisateurs/utilisateurs.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddDossierComponent } from './components/dashboard-adh/add-dossier/add-dossier.component';
+import { ListdossierComponent } from './components/dashboard-adh/listdossier/listdossier.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AddDossierComponent } from './components/dashboard-adh/add-dossier/add-
     ProfilComponent,
     HomeAdminComponent,
     UtilisateursComponent,
-    AddDossierComponent 
+    AddDossierComponent,
+    ListdossierComponent 
   ],
   imports: [
     CommonModule,

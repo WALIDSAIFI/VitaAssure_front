@@ -28,7 +28,7 @@ export class SidebarComponent implements OnInit {
     {
       title: 'Ajouter Dossier',
       icon: 'M12 4v16m8-8H4',
-      route: '/dossiers/nouveau',
+      route: '/addossiers',
       roles: ['ADHERENT']
     },
     {

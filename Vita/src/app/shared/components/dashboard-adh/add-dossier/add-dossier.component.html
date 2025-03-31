@@ -1,1 +1,54 @@
-<p>add-dossier works!</p>
+<app-sidebar>
+  <app-navbar></app-navbar>
+  
+  <div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl p-6">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">Ajouter un Nouveau Dossier</h2>
+      
+      <form [formGroup]="dossierForm" (ngSubmit)="onSubmit()" class="space-y-6">
+       
+  
+        <!-- Type de Traitement -->
+        <div>
+          <label for="typeTraitement" class="block text-sm font-medium text-gray-700">Type de traitement</label>
+          <select id="typeTraitement" formControlName="typeTraitement"
+                  class="mt-1 block w-full pl-3 pr-10 py-2 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+            <option value="">Sélectionnez un type de traitement</option>
+            <option *ngFor="let type of traitementTypes" [value]="type">{{type}}</option>
+          </select>
+          <div *ngIf="dossierForm.get('typeTraitement')?.invalid && dossierForm.get('typeTraitement')?.touched" 
+               class="text-red-500 text-sm mt-1">
+            Veuillez sélectionner un type de traitement
+          </div>
+        </div>
+  
+        <!-- Commentaire -->
+        <div>
+          <label for="commentaire" class="block text-sm font-medium text-gray-700">Commentaire</label>
+          <textarea id="commentaire" formControlName="commentaire" rows="3"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+          <div *ngIf="dossierForm.get('commentaire')?.invalid && dossierForm.get('commentaire')?.touched" 
+               class="text-red-500 text-sm mt-1">
+            Un commentaire est requis
+          </div>
+        </div>
+  
+        <!-- Frais Totaux -->
+        <div>
+          <label for="totalFrais" class="block text-sm font-medium text-gray-700">Total Frais</label>
+          <input id="totalFrais" type="number" formControlName="totalFrais" required (change)="convertTotalFrais()"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+        </div>
+        
+  
+        <!-- Bouton de Soumission -->
+        <div>
+          <button type="submit" [disabled]="dossierForm.invalid"
+                  class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-300">
+            Créer le Dossier
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</app-sidebar>
