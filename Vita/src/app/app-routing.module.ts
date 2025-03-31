@@ -7,7 +7,7 @@ import { ProfilComponent } from './shared/components/dashboard-adh/profil/profil
 import { HomeAdminComponent } from './shared/components/dashboard-admin/home-admin/home-admin.component';
 import { UtilisateursComponent } from './shared/components/dashboard-admin/utilisateurs/utilisateurs.component';
 import { AddDossierComponent } from './shared/components/dashboard-adh/add-dossier/add-dossier.component';
-
+import {ListdossierComponent} from './shared/components/dashboard-adh/listdossier/listdossier.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -17,7 +17,9 @@ const routes: Routes = [
   { path: 'profil', component: ProfilComponent },
   { path: 'admin', component: HomeAdminComponent },
   { path: 'admin/utilisateurs', component: UtilisateursComponent },
-  {path: 'addossiers', component: AddDossierComponent }
+  {path: 'addossiers', component: AddDossierComponent },
+  {path :'listdossier' , component : ListdossierComponent},
+  {path: 'admin', component: HomeAdminComponent }
   
 ];
 

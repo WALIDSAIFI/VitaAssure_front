@@ -20,7 +20,7 @@ import { ListdossierComponent } from './components/dashboard-adh/listdossier/lis
     HomeAdminComponent,
     UtilisateursComponent,
     AddDossierComponent,
-    ListdossierComponent 
+    ListdossierComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +34,8 @@ import { ListdossierComponent } from './components/dashboard-adh/listdossier/lis
     ProfilComponent,
     HomeAdminComponent,
     UtilisateursComponent,
-    AddDossierComponent 
+    AddDossierComponent, 
+    ListdossierComponent
   ]
 })
 export class SharedModule { }
