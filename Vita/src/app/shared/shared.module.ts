@@ -10,6 +10,8 @@ import { UtilisateursComponent } from './components/dashboard-admin/utilisateurs
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddDossierComponent } from './components/dashboard-adh/add-dossier/add-dossier.component';
 import { ListdossierComponent } from './components/dashboard-adh/listdossier/listdossier.component';
+import { PriseenchargeComponent } from './components/dashboard-adh/priseencharge/priseencharge.component';
+import { AddpriseenchargeComponent } from './components/dashboard-adh/addpriseencharge/addpriseencharge.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ListdossierComponent } from './components/dashboard-adh/listdossier/lis
     HomeAdminComponent,
     UtilisateursComponent,
     AddDossierComponent,
-    ListdossierComponent
+    ListdossierComponent,
+    PriseenchargeComponent,
+    AddpriseenchargeComponent
   ],
   imports: [
     CommonModule,

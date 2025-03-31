@@ -27,12 +27,29 @@ export class ListdossierComponent implements OnInit {
     if (this.userId) {
       this.dossierService.getDossiersByUser(this.userId).subscribe(
         (data) => this.dossiers = data.content,
+       
         (error) => console.error('Erreur lors du chargement des dossiers', error)
       );
     }
   }
 
+ 
+  getStatutClass(statut: string): string {
+    switch (statut) {
+      case 'EN_ATTENTE':
+        return 'bg-yellow-500';
+      case 'TRAITE':
+        return 'bg-blue-500';
+      case 'REJETE':
+        return 'bg-red-500';
+      case 'ACCEPTE':
+        return 'bg-green-500';
+      default:
+        return 'bg-gray-500';
+    }
+  }
   editDossier(id: number): void {
     this.router.navigate(['/modifier-dossier', id]);
   }
+  
 }

@@ -8,7 +8,8 @@ import { HomeAdminComponent } from './shared/components/dashboard-admin/home-adm
 import { UtilisateursComponent } from './shared/components/dashboard-admin/utilisateurs/utilisateurs.component';
 import { AddDossierComponent } from './shared/components/dashboard-adh/add-dossier/add-dossier.component';
 import {ListdossierComponent} from './shared/components/dashboard-adh/listdossier/listdossier.component';
-
+import {PriseenchargeComponent} from './shared/components/dashboard-adh/priseencharge/priseencharge.component'
+import { AddpriseenchargeComponent } from './shared/components/dashboard-adh/addpriseencharge/addpriseencharge.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -19,7 +20,9 @@ const routes: Routes = [
   { path: 'admin/utilisateurs', component: UtilisateursComponent },
   {path: 'addossiers', component: AddDossierComponent },
   {path :'listdossier' , component : ListdossierComponent},
-  {path: 'admin', component: HomeAdminComponent }
+  {path: 'admin', component: HomeAdminComponent },
+  { path: 'prise', component : PriseenchargeComponent},
+  { path : 'addprise', component: AddpriseenchargeComponent}
   
 ];
 
