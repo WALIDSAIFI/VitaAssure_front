@@ -10,6 +10,7 @@ import { AddDossierComponent } from './shared/components/dashboard-adh/add-dossi
 import {ListdossierComponent} from './shared/components/dashboard-adh/listdossier/listdossier.component';
 import {PriseenchargeComponent} from './shared/components/dashboard-adh/priseencharge/priseencharge.component'
 import { AddpriseenchargeComponent } from './shared/components/dashboard-adh/addpriseencharge/addpriseencharge.component';
+import { DossierComponent } from './shared/components/dashboard-admin/dossier/dossier.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path :'listdossier' , component : ListdossierComponent},
   {path: 'admin', component: HomeAdminComponent },
   { path: 'prise', component : PriseenchargeComponent},
-  { path : 'addprise', component: AddpriseenchargeComponent}
+  { path : 'addprise', component: AddpriseenchargeComponent},
+  { path :'dossier', component : DossierComponent}
   
 ];
 

@@ -12,6 +12,8 @@ import { AddDossierComponent } from './components/dashboard-adh/add-dossier/add-
 import { ListdossierComponent } from './components/dashboard-adh/listdossier/listdossier.component';
 import { PriseenchargeComponent } from './components/dashboard-adh/priseencharge/priseencharge.component';
 import { AddpriseenchargeComponent } from './components/dashboard-adh/addpriseencharge/addpriseencharge.component';
+import { DossierComponent } from './components/dashboard-admin/dossier/dossier.component';
+import { PrisenchargeComponent } from './components/dashboard-admin/prisencharge/prisencharge.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AddpriseenchargeComponent } from './components/dashboard-adh/addpriseen
     AddDossierComponent,
     ListdossierComponent,
     PriseenchargeComponent,
-    AddpriseenchargeComponent
+    AddpriseenchargeComponent,
+    DossierComponent,
+    PrisenchargeComponent
   ],
   imports: [
     CommonModule,
