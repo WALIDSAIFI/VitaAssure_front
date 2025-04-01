@@ -1,0 +1,62 @@
+<div class="flex h-screen">
+    <app-sidebar>
+      <div class="min-h-screen bg-gray-50">
+        <app-navbar></app-navbar>
+
+        <div class="container mx-auto p-6">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-800">Validation des prises en charge</h2>
+            
+            <div *ngIf="prisesEnCharge.length === 0" class="bg-blue-100 text-blue-700 p-4 rounded-lg text-center">
+              Aucune prise en charge à valider pour le moment.
+            </div>
+          
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse bg-white shadow-lg rounded-lg overflow-hidden" *ngIf="prisesEnCharge.length > 0">
+                <thead class="bg-gray-800 text-white">
+                  <tr>
+                   
+            
+                    <th class="px-4 py-3">Description</th>
+                    <th class="px-4 py-3">Montant estimé</th>
+                    <th class="px-4 py-3">Date demande</th>
+                    <th class="px-4 py-3">Statut</th>
+                    <th class="px-4 py-3">Commentaire</th>
+                    <th class="px-4 py-3">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pec of prisesEnCharge" class="border-b hover:bg-gray-100">
+                   
+                    <td class="px-4 py-2">{{ pec.description }}</td>
+                    <td class="px-4 py-2 text-right">{{ pec.montantEstime | currency:'EUR' }}</td>
+                    <td class="px-4 py-2 text-center">{{ pec.dateDemande | date:'dd/MM/yyyy' }}</td>
+                    <td class="px-4 py-2 text-center">
+                      <span class="px-2 py-1 rounded-lg text-white text-sm"
+                            [ngClass]="{
+                              'bg-yellow-500': pec.statut === 'EN_ATTENTE',
+                              'bg-green-500': pec.statut === 'VALIDEE',
+                              'bg-red-500': pec.statut === 'REJETEE'
+                            }">
+                        {{ pec.statut }}
+                      </span>
+                    </td>
+                    <td class="px-4 py-2 text-center">{{ pec.commentaire || '-' }}</td>
+                    <td class="px-4 py-2 text-center">
+                      <div class="flex space-x-2 justify-center" *ngIf="pec.statut === 'EN_ATTENTE'">
+                        <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded-lg flex items-center"
+                                (click)="validerPriseEnCharge(pec.id)">
+                          <i class="fas fa-check mr-2"></i> Valider
+                        </button>
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg flex items-center"
+                                (click)="rejeterPriseEnCharge(pec.id)">
+                          <i class="fas fa-times mr-2"></i> Rejeter
+                        </button>
+                      </div>
+                      <span *ngIf="pec.statut !== 'EN_ATTENTE'">-</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        

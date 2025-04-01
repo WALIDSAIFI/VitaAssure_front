@@ -11,6 +11,7 @@ import {ListdossierComponent} from './shared/components/dashboard-adh/listdossie
 import {PriseenchargeComponent} from './shared/components/dashboard-adh/priseencharge/priseencharge.component'
 import { AddpriseenchargeComponent } from './shared/components/dashboard-adh/addpriseencharge/addpriseencharge.component';
 import { DossierComponent } from './shared/components/dashboard-admin/dossier/dossier.component';
+import {PrisenvalidationComponent} from './shared/components/dashboard-admin/prisenvalidation/prisenvalidation.component'
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'admin', component: HomeAdminComponent },
   { path: 'prise', component : PriseenchargeComponent},
   { path : 'addprise', component: AddpriseenchargeComponent},
-  { path :'dossier', component : DossierComponent}
+  { path :'dossier', component : DossierComponent},
+  {path : 'validationprise' , component : PrisenvalidationComponent}
   
 ];
 

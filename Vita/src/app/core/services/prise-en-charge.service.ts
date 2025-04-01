@@ -25,4 +25,7 @@ export class PriseEnChargeService {
   getPrisesEnChargeByUtilisateurId(utilisateurId: number): Observable<PriseEnCharge[]> {
     return this.http.get<PriseEnCharge[]>(`${this.API_URL}/utilisateur/${utilisateurId}`);
   }
+  getAll(): Observable<PriseEnCharge[]> {
+    return this.http.get<PriseEnCharge[]>(this.API_URL);
+  }
 }
