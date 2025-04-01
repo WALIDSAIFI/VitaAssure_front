@@ -3,6 +3,7 @@ import { DossierService, Dossier } from '../../../../core/services/dossier.servi
 
 @Component({
   selector: 'app-dossier',
+  
   templateUrl: './dossier.component.html',
   styleUrls: ['./dossier.component.css']
 })
@@ -73,7 +74,7 @@ export class DossierComponent implements OnInit {
       'VALIDÉ': 'bg-green-100 text-green-800',
       'VALIDE': 'bg-green-100 text-green-800',
       'REJETÉ': 'bg-red-100 text-red-800',
-      'REJETE': 'bg-red-100 text-red-800'
+      'ACCEPTE': 'bg-green-100 text-green-800'
     }[status] || 'bg-gray-100 text-gray-800';
   }
 
@@ -86,4 +87,33 @@ export class DossierComponent implements OnInit {
       'HOSPITALISATION': 'bg-red-100 text-red-800'
     }[type] || 'bg-gray-100 text-gray-800';
   }
+
+
+  accepterDossier(dossier: Dossier): void {
+    this.dossierService.acceptDossier(dossier.id).subscribe({
+      next: () => {
+        dossier.statut = 'ACCEPTE'; // Mise à jour locale
+        console.log(`Dossier ${dossier.id} accepté`);
+      },
+      error: (err) => {
+        console.error(`Erreur lors de l'acceptation du dossier ${dossier.id}`, err);
+      }
+    });
+  }
+
+  rejeterDossier(dossier: Dossier): void {
+    this.dossierService.rejectDossier(dossier.id).subscribe({
+      next: () => {
+        dossier.statut = 'REJETE'; 
+        console.log(`Dossier ${dossier.id} rejeté`);
+      },
+      error: (err) => {
+        console.error(`Erreur lors du rejet du dossier ${dossier.id}`, err);
+      }
+    });
+  }
+  
+ 
 }
+
+

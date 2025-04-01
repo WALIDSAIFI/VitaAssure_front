@@ -34,4 +34,12 @@ export class DossierService {
   getDossiersByUser(userId: number): Observable<{ content: Dossier[] }> {
     return this.http.get<{ content: Dossier[] }>(`${this.apiUrl}/utilisateur/${userId}`);
   }
+
+  acceptDossier(dossierId: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/accepter/${dossierId}`, {});
+  }
+
+  rejectDossier(dossierId: number): Observable<any> {
+    return this.http.put(`${this.apiUrl}/rejeter/${dossierId}`, {});
+  }
 }
