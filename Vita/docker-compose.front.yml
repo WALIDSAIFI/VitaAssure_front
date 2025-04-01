@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  vita-frontend:
+    container_name: vita-front-container
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    networks:
+      - vita-network
+
+networks:
+  vita-network:
+    driver: bridge
