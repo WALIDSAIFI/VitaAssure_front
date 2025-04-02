@@ -28,4 +28,12 @@ export class PriseEnChargeService {
   getAll(): Observable<PriseEnCharge[]> {
     return this.http.get<PriseEnCharge[]>(this.API_URL);
   }
+
+  accepterPriseEnCharge(id: number): Observable<PriseEnCharge> {
+    return this.http.post<PriseEnCharge>(`${this.API_URL}/accepter/${id}`, {});
+  }
+
+  rejeterPriseEnCharge(id: number): Observable<PriseEnCharge> {
+    return this.http.post<PriseEnCharge>(`${this.API_URL}/rejeter/${id}`, {});
+  }
 }
